@@ -16,6 +16,27 @@ The skill defines 7 sequential phases of auditing:
 
 ---
 
+## 📋 Orchestrating a Large-Scale Audit (Multi-Agent Pipeline)
+
+When auditing a large codebase, passing the entire repository to a single agent session at once leads to context overload, low finding depth, and high hallucination rates. 
+
+To solve this, we use a structured **Multi-Agent Audit Pipeline**. The template is provided in [tasks-pipeline-example.md](file:///g:/Anti/product-ux-audit_repo/tasks-pipeline-example.md).
+
+### How to use this strategy:
+
+1. **Ask the Agent to Scan & Split:** 
+   Feed the codebase to your AI assistant and ask it to scan the project files, identify all core **User Flows** or architectural module boundaries, and generate a task list formatted like `tasks-pipeline-example.md`. Let the LLM design the scope partition.
+2. **Execute Sequentially:**
+   Instruct the agent to execute these tasks **one-by-one**. Keeping each task focused on a single flow (e.g. auth-onboarding) with isolated directory paths ensures the agent stays highly focused and identifies deep, non-obvious issues.
+3. **Run Parallel Audits (Run A / Run B):**
+   To avoid confirmation bias, start two independent agent sessions (Run A and Run B) with clean contexts for the same scope. 
+4. **Merge Findings:**
+   Have a merge task after each run pair. The merging agent consolidates findings, taking the highest severity and listing run-specific entries.
+5. **Consolidate to Final Report:**
+   Run a final task to concatenate all merged flows, deduplicate them, and sort the findings from `CRITICAL` down to `LOW` in a master document (`AUDIT_FINAL.md`).
+
+---
+
 ## 💻 Default Technology Stack
 
 The default searches and rules in `SKILL.md` are set up for:
