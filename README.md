@@ -18,6 +18,15 @@ The skill defines 7 sequential phases of auditing:
 
 ---
 
+## How to Use
+
+1. **Install:** Save `SKILL.md` into `~/.claude/skills/product-ux-audit/SKILL.md` (create the folder if needed). Restart your agent session - the skill becomes available as `/product-ux-audit`.
+2. **Invoke with a defined scope:** Trigger it for one user flow at a time - e.g. "/product-ux-audit. Scope: auth-onboarding. Files: src/app/(auth)/*, src/api/auth.ts". See Scope Discipline in SKILL.md - never point it at an entire repository in one pass.
+3. **Read the report:** Phase reports plus a final summary are written to %USERPROFILE%\Desktop\_Reports\<timestamp>\ - never inside the project repository.
+4. **Auditing a whole product?** See "Orchestrating a Large-Scale Audit" below - generate a task list first, then run it one scope at a time.
+
+---
+
 ## 📋 Orchestrating a Large-Scale Audit (Multi-Agent Pipeline)
 
 When auditing a large codebase, passing the entire repository to a single agent session at once leads to context overload, low finding depth, and high hallucination rates. 
