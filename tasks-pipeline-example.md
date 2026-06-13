@@ -11,15 +11,16 @@ This file demonstrates how to orchestrate a thorough, multi-agent `/product-ux-a
 
 ## 🛠️ Pipeline Rules
 
-1. **Isolation:** `runA` and `runB` for each scope are executed independently by different agents (or fresh sessions) to catch unique findings and prevent bias.
-2. **Phase Execution:** For each active task, trigger the `/product-ux-audit` skill for the specified scope and relevant files.
-3. **Execution Mode:** Agents must execute the task list sequentially, one item at a time, checking off the items in this file as they complete them.
-4. **Progress Tracking:** Update a progress log (e.g., `00_PROGRESS.md`) after each task is completed:
+1. **Orchestrator Role:** The main agent acts as the coordinator/orchestrator. It reads this task list and sequentially spawns dedicated subagents (with clean, isolated contexts) to perform the actual audits.
+2. **Isolation:** Subagents for `runA` and `runB` of the same scope must run independently without shared context to eliminate confirmation bias and catch diverse findings.
+3. **Phase Execution:** For each active task, the orchestrator instructs the subagent to trigger the `/product-ux-audit` skill for the specified scope and relevant files.
+4. **Execution Mode:** The orchestrator moves through the checklist sequentially, one task at a time, waiting for the active subagent to finish before checking it off and starting the next one.
+5. **Progress Tracking:** Update a progress log (e.g., `00_PROGRESS.md`) after each task is completed:
    `[Task ID] | [Scope Name] | CRITICAL: X | HIGH: Y | MEDIUM: Z | DONE`
-5. **Merge Strategy:** Once `runA` and `runB` are complete for a scope, merge their final reports into `MERGED.md`:
+6. **Merge Strategy:** Once `runA` and `runB` are complete for a scope, merge their final reports into `MERGED.md` (the orchestrator can do this or spawn a merging subagent):
    - Combine shared findings (keep the higher severity of the two).
    - Keep unique findings marked as `[Run A only]` or `[Run B only]`.
-6. **Final Consolidation:** Merge all `MERGED.md` files into a single, deduplicated master report (`AUDIT_FINAL.md`), sorting findings by severity: `CRITICAL` ➔ `HIGH` ➔ `MEDIUM` ➔ `LOW`.
+7. **Final Consolidation:** Merge all `MERGED.md` files into a single, deduplicated master report (`AUDIT_FINAL.md`), sorting findings by severity: `CRITICAL` ➔ `HIGH` ➔ `MEDIUM` ➔ `LOW`.
 
 ---
 
