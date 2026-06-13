@@ -1,5 +1,7 @@
 # 🔍 Product UX Audit Skill
 
+> **Professional Standard:** This framework represents a mature, systematic approach to automating quality control (QA) and product UX auditing. It can be safely adopted as a standard auditing pipeline for any medium-to-large scale commercial projects.
+
 A read-only, multi-phase audit protocol designed for AI coding assistants (such as Antigravity, Claude, or other agentic frameworks). This skill guides the agent to perform a systematic, evidence-based audit of a product's business logic, user journeys, UX heuristics, edge cases, and feature modularity.
 
 ## 🌟 What It Does
