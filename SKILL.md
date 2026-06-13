@@ -15,7 +15,7 @@ Use this skill when the user asks for:
 - a codebase modularization / separation-of-concerns review (product-driven, not security)
 - a lightweight "is this feature production-ready from a product POV" check
 
-**STRICT READ-ONLY**: Never modify, refactor, or create files inside the project repository. Only write reports to the `_reports` output folder. Do not run mutating commands, migrations, or scripts.
+**STRICT READ-ONLY**: Never modify, refactor, or create files inside the project repository. Only write reports to the `_Reports` output folder. Do not run mutating commands, migrations, or scripts.
 
 For security/auth/crypto/data-integrity audits, use `forensic-audit` instead. For pure code-quality/refactor reviews, use `code-review` or `simplify`.
 
@@ -277,7 +277,7 @@ Order: `audit_master_summary.md` first, then `audit_0_flow-map.md`, `audit_1_pro
 
 ## Constraints
 
-- **READ-ONLY** on project source. Zero writes inside the repository — reports only go to `$outDir` under `_reports`.
+- **READ-ONLY** on project source. Zero writes inside the repository — reports only go to `$outDir` under `_Reports`.
 - **Evidence-only**: every finding cites a file:line, screen name, or concrete code excerpt. No speculation framed as fact.
 - **Timestamped output** — never overwrite previous runs.
 - **Scope discipline**: don't silently expand scope to the whole app; if you think broader scope is warranted, say so in the summary instead of just doing it.
