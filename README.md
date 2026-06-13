@@ -22,7 +22,7 @@ The skill defines 7 sequential phases of auditing:
 
 When auditing a large codebase, passing the entire repository to a single agent session at once leads to context overload, low finding depth, and high hallucination rates. 
 
-To solve this, we use a structured **Multi-Agent Audit Pipeline**. The template is provided in [tasks-pipeline-example.md](file:///g:/Anti/product-ux-audit_repo/tasks-pipeline-example.md).
+To solve this, we use a structured **Multi-Agent Audit Pipeline**. The template is provided in [tasks-pipeline-example.md](./tasks-pipeline-example.md).
 
 ### How to use this strategy:
 
