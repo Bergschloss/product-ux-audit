@@ -21,8 +21,12 @@ This file demonstrates how to orchestrate a thorough, multi-agent `/product-ux-a
 - **Do not delegate merges:** Merging requires comparing two files and context; the orchestrator should do this directly instead of delegating to a subagent.
 
 ### Phase 3: Final Cross-Scope Merge (Orchestrator)
-- **Deduplicate and group:** Once all `MERGED.md` files are ready, the orchestrator reads them all, performs cross-scope deduplication, groups findings by category/theme, and compiles the master report (e.g., `AUDIT_FINAL.md`).
-- **Sort by severity:** Order findings strictly from `CRITICAL` ➔ `HIGH` ➔ `MEDIUM` ➔ `LOW`.
+- **Deduplicate and group:** Once all `MERGED.md` files are ready, the orchestrator reads them all, performs cross-scope deduplication, and compiles the master report (e.g., `AUDIT_FINAL.md`).
+- **Include ALL findings:** 
+  - **CRITICAL & HIGH:** Each must include its file path, line number (`file:line`), and a detailed description.
+  - **MEDIUM & LOW:** Group these as bulleted lists organized by scope. Do not omit any findings.
+- **Cross-Scope Deduplication:** If the exact same issue pattern occurs across multiple scopes, combine them into a single `CRITICAL` or `HIGH` finding and list all affected files/scopes.
+- **Sort by severity:** Order the consolidated findings strictly from `CRITICAL` ➔ `HIGH` ➔ `MEDIUM` ➔ `LOW`.
 - **Do not delegate the final merge:** This requires full repository context of all scopes, which only the orchestrator possesses.
 
 ### Progress & Context Rules
