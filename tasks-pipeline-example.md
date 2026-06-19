@@ -35,6 +35,14 @@ This file demonstrates how to orchestrate a thorough, multi-agent `/product-ux-a
 - **Context Preservation:** Do not output the entire contents of generated `FINAL.md` or `MERGED.md` reports into the chat context. Only confirm the generated file path and proceed to the next task to prevent token limit issues.
 - **Directory Isolation:** Create a separate subfolder for each task scope (e.g., `01_auth-onboarding/runA/`, `01_auth-onboarding/runB/`).
 
+### Why the Orchestrator Handles Merges Directly
+- **Merge (2 inputs):** The orchestrator processes this faster than spinning up a new subagent.
+- **Final (N inputs):** Cross-scope deduplication requires full context of all scopes — only the orchestrator has this.
+
+### Prompt Template for Subagents
+For each `runA`/`runB` task, instruct the subagent:
+`"/product-ux-audit. Scope: [scope name]. App: [app tag]. Relevant files (read these first, then discover more via skill's pre-flight if needed): [file list]. READ-ONLY. Save all phase reports + FINAL to: [output path]. Focus: find UX gaps, logic issues, edge cases in this scope only. Severity: CRITICAL=user-blocking / HIGH=likely issue / MEDIUM=gap / LOW=doc gap."`
+
 ---
 
 ## 🎯 Example Pipeline Tasks
