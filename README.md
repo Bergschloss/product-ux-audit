@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="images/logo.png" alt="Product UX Audit Logo" width="200" />
+</p>
+
 # 🔍 Product UX Audit Skill
 
 > **Professional Standard:** This framework has been validated through 30+ audit runs on a production Turborepo monorepo (Next.js, Fastify, Electron, Prisma/PostgreSQL). It represents a mature, systematic approach to automating QA and product UX auditing, and can be adopted as a standard auditing pipeline for medium-to-large scale commercial projects.
