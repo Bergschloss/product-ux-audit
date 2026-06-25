@@ -1,6 +1,6 @@
 ---
 name: product-ux-audit
-description: Read-only, multi-phase audit of product logic, UX heuristics, user journeys, edge cases, and architecture modularity. Use this skill when the user invokes /product-ux-audit, asks for a "product audit", "UX audit", "аудит продукту", "аудит UX/логіки", "перевір UX і бізнес-логіку", a heuristic evaluation, a user-journey review, or an edge-case / happy-path-vs-exception-path analysis. Complements `forensic-audit` (security/architecture) — this skill focuses on product logic, UX quality, and user-facing flow consistency, not vulnerabilities. MANDATORY: never run on an entire repo in a single pass — scope each invocation to one user flow / module (use a task list to split large codebases).
+description: Read-only, multi-phase audit of product logic, UX heuristics, user journeys, edge cases, and architecture modularity. Use this skill when the user invokes /product-ux-audit, asks for a "product audit", "UX audit", "product logic audit", "usability check", a heuristic evaluation, a user-journey review, or an edge-case / happy-path-vs-exception-path analysis. Complements `forensic-audit` (security/architecture) — this skill focuses on product logic, UX quality, and user-facing flow consistency, not vulnerabilities. MANDATORY: never run on an entire repo in a single pass — scope each invocation to one user flow / module (use a task list to split large codebases).
 ---
 
 # Skill: product-ux-audit
@@ -8,8 +8,8 @@ description: Read-only, multi-phase audit of product logic, UX heuristics, user 
 ## Trigger
 
 Use this skill when the user asks for:
-- a product logic audit ("аудит бізнес-логіки", "audit product logic")
-- a UX/heuristic evaluation ("UX audit", "перевір юзабіліті")
+- a product logic audit ("product logic audit", "business logic audit")
+- a UX/heuristic evaluation ("UX audit", "usability review")
 - user journey mapping or happy-path vs exception-path analysis
 - edge-case / boundary-condition discovery for a flow or feature
 - a codebase modularization / separation-of-concerns review (product-driven, not security)
